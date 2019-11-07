@@ -44,15 +44,7 @@ class App extends Component {
       this.setState({showPerson:!doesShows});
   }
   render() {
-    const buttonStyle = {
-      backgroundColor:'green',
-      color:'whith',
-      font:'inherit',
-      border:'1px solid blue',
-      padding:'8px',
-      cursor:'pointer',
-     
-    }
+    let btnClass = '';
 
     let Persons = null;
 
@@ -69,7 +61,7 @@ class App extends Component {
           })}
           </div>
       );
-      buttonStyle.backgroundColor='red';
+      btnClass = classes.red;
      
     }
 
@@ -86,7 +78,7 @@ class App extends Component {
       <p>Hi, I am a react App</p>
       <p className={assignedClasses.join(' ')}>This is really working!</p>
       <button 
-        style={buttonStyle}
+       className={btnClass}
        onClick={this.togglePersonHandler}>Toggle Person</button>
        {Persons}
       </div>
