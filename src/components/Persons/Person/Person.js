@@ -4,13 +4,20 @@ import Auxx from '../../../hoc/Auxx';
 import widthClass from '../../../hoc/withClass';
 
 class Person extends Component {
+    componentDidMount(){
+        this.inputElement.focus();
+    }
     render(){
         return (
             <Auxx>
              <div className={classes.person}>
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} year old</p>
                 <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name}/>
+                <input 
+                ref={ (inputEl)=>{this.inputElement = inputEl} }
+                type="text" 
+                onChange={this.props.changed} 
+                value={this.props.name}/>
              </div>
             </Auxx>
         );
