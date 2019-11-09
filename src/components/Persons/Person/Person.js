@@ -4,8 +4,12 @@ import Auxx from '../../../hoc/Auxx';
 import widthClass from '../../../hoc/withClass';
 
 class Person extends Component {
+    constructor(props){
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
     componentDidMount(){
-        this.inputElement.focus();
+        // this.inputElement.focus();
     }
     render(){
         return (
@@ -14,7 +18,8 @@ class Person extends Component {
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} year old</p>
                 <p>{this.props.children}</p>
                 <input 
-                ref={ (inputEl)=>{this.inputElement = inputEl} }
+                // ref={ (inputEl)=>{this.inputElement = inputEl} }
+                ref={this.inputElementRef}
                 type="text" 
                 onChange={this.props.changed} 
                 value={this.props.name}/>
