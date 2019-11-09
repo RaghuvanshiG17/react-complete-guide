@@ -1,6 +1,24 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import classes from './cockpit.css';
+
 const cockpit = (props) => {
+    useEffect( ()=>{
+      console.log("this is useEffect hooks");
+      setTimeout(()=>{
+          alert("Saved data to cloud!");
+      },1000);
+      return () =>{
+      // clearTimeout(timer);
+      console.log("cleanup work is useEffect");
+      }
+    },[]);
+
+    useEffect(()=>{
+      console.log("2nd useEffect");
+      return () => {
+        console.log("cleanup work in 2nd useEffect");
+      }
+    });
     const assignedClasses = [];
     let btnClass = '';
     
@@ -24,4 +42,4 @@ const cockpit = (props) => {
     );
 }
 
-export default cockpit;
+export default React.memo(cockpit);
