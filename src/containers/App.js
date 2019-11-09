@@ -3,7 +3,8 @@ import classes from './App.css';
 import Personss from '../components/Persons/persons';
 import ErrorBoundary from '../EooroBoundary/ErrorBoundary';
 import Cockpit from '../components/Cockpit/cockpit'
-import WidthClass from '../hoc/WithClass';
+import widthClass from '../hoc/withClass';
+import Auxx from '../hoc/Auxx';
 
 class App extends Component {
 
@@ -61,7 +62,7 @@ class App extends Component {
 
     
     return (
-    <WidthClass classes={classes.App}> 
+    <Auxx>
         <button onClick={()=>{
           this.setState({showCockpit:false});
         }}>Remove Cockpit</button>
@@ -71,9 +72,9 @@ class App extends Component {
         persons={this.state.person}
         clicked={this.togglePersonHandler}/> : null }
        {Persons}
-      </WidthClass>
+      </Auxx>
     );
   }
 }
 
-export default App;
+export default widthClass(App,classes.App);
