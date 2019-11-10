@@ -14,6 +14,7 @@ class Person extends Component {
     render(){
         return (
             <Auxx>
+                {this.props.isAuth ? <p>Authenticated</p>:  <p>Not Authenticated</p>}:
              <div className={classes.person}>
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} year old</p>
                 <p>{this.props.children}</p>

@@ -15,7 +15,8 @@ class App extends Component {
       {id:3,name:'stephanie',age:26}
     ],
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
 
   nameChangeHandler = (event,id) => {
@@ -43,6 +44,9 @@ class App extends Component {
     })
   }
 
+  loginHandler = ()=> {
+    this.setState({authenticated:true});
+  }
   deletePersonHadler= (personIndex) =>{
     const personInd =  this.state.person;
     personInd.splice(personIndex,1);
@@ -63,7 +67,8 @@ class App extends Component {
         <Personss 
           person={this.state.person}
           clicked={this.deletePersonHadler}
-          changed={this.nameChangeHandler}/>;
+          changed={this.nameChangeHandler}
+          isAuthenticated={this.state.authenticated}/>;
      }
 
     
@@ -76,7 +81,8 @@ class App extends Component {
         title={this.props.title}
         showPerson={this.state.showPerson}
         persons={this.state.person}
-        clicked={this.togglePersonHandler}/> : null }
+        clicked={this.togglePersonHandler}
+        login={this.loginHandler}/> : null }
        {Persons}
       </Auxx>
     );
