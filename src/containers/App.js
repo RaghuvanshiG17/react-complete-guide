@@ -5,7 +5,7 @@ import ErrorBoundary from '../EooroBoundary/ErrorBoundary';
 import Cockpit from '../components/Cockpit/cockpit'
 import widthClass from '../hoc/withClass';
 import Auxx from '../hoc/Auxx';
-
+import AuthContext from '../context/auth-context';
 class App extends Component {
 
   state={
@@ -77,13 +77,16 @@ class App extends Component {
         <button onClick={()=>{
           this.setState({showCockpit:false});
         }}>Remove Cockpit</button>
-        {this.state.showCockpit ? <Cockpit 
+        <AuthContext.Provider value={{authenticated: this.state.authenticated, 
+          login:this.loginHandler}}>
+        {this.state.showCockpit ? 
+        <Cockpit 
         title={this.props.title}
         showPerson={this.state.showPerson}
         persons={this.state.person}
-        clicked={this.togglePersonHandler}
-        login={this.loginHandler}/> : null }
+        clicked={this.togglePersonHandler}/> : null }
        {Persons}
+       </AuthContext.Provider>
       </Auxx>
     );
   }

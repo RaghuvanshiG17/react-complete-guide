@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import classes from  './person.css';
 import Auxx from '../../../hoc/Auxx';
 import widthClass from '../../../hoc/withClass';
-
+import AuthContext from '../../../context/auth-context';
 class Person extends Component {
     constructor(props){
         super(props);
@@ -14,7 +14,12 @@ class Person extends Component {
     render(){
         return (
             <Auxx>
-                {this.props.isAuth ? <p>Authenticated</p>:  <p>Not Authenticated</p>}:
+                <AuthContext.Consumer>
+                    {context => 
+                        context.authenticated ? <p>Authenticated</p>:  
+                                                <p>Not Authenticated</p>
+                    }
+                </AuthContext.Consumer>
              <div className={classes.person}>
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} year old</p>
                 <p>{this.props.children}</p>
