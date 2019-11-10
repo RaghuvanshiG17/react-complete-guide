@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class ErrorBoundry extends Component{
-    state ={
+class ErrorBoundry extends Component {
+    state = {
         hasError: false,
-        errorMessage:''
+        errorMessage: ''
     }
-    componentDidCatch=(error,info)=>{
-        this.setState({hasError:true, errorMessage:error});
+    componentDidCatch = (error, info) => {
+        this.setState({ hasError: true, errorMessage: error });
     }
 
-    render(){
-        if(this.state.hasError){
+    render() {
+        if (this.state.hasError) {
             return <h1>{this.state.errorMessage}</h1>
-        }else {
+        } else {
             return this.props.children;
         }
     }

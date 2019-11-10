@@ -1,9 +1,9 @@
 import React from 'react';
 
 const widthClass = (WrappedComponent, className) => {
-    return props =>(
+    return props => (
         <div className={className}>
-            <WrappedComponent {...props}/>
+            <WrappedComponent {...props} />
         </div>
     );
 }
